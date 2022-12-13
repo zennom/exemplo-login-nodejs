@@ -9,4 +9,6 @@ router.get('/',(req,res) =>{
 
 router.get('/login',authController.login)
 
+
+
 export default router 

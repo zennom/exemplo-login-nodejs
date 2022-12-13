@@ -5,26 +5,24 @@
 <p>Digite seu e-mail e senha</p>
 
 <form action="/login" method="post">
+   
     <div>
         <input class="campo" name="email" type="email" placeholder="E-mail" id="email">
     </div>
 
     <div>
         <input name="senha" type="password" placeholder="Senha" id="senha">
-        <i class="fa-regular fa-eye" id="btn-show" onclick="showHide()"></i>
-        <i class="none fa-regular fa-eye-slash" id="btn-hidden" onclick="showHide()"></i>
     </div>
 
     <h2>
 
     </h2>
 
-
     <button>Entrar</button>
 
 </form>
 
-<p>Esqueceu sua senha? <span> <a class="link" href="">Clique Aqui</a></span></p>
-<p>Ainda não tem uma conta? <span> <a class="link" href="/cadastro">Crie uma</a></span></p>
+<p>Esqueceu sua senha? <a class="link" href="">Clique Aqui</a></p>
+<p>Ainda não tem uma conta?  <a class="link" href="/cadastro">Crie uma</a></p>
 
 {{>partials/footer}}
