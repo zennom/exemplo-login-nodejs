@@ -1,0 +1,39 @@
+{{>partials/header}}
+
+<section>
+    <div>
+        <h1>Registrar</h1>
+    </div>
+
+    <p>Preencha as informações abaixo:</p>
+
+    <form id="form" class="form" action="/cadastro" method="post">
+        <div>
+            <input class="campo" name="nome" type="text" placeholder="Nome" id="nome">
+        </div>
+
+        <div>
+            <input class="campo" name="sobrenome" type="text" placeholder="Sobrenome" id="sobrenome">
+        </div>
+
+        <div>
+            <input class="campo" name="email" type="email" placeholder="E-mail" id="email">
+            <div class="msg-erro">
+                <small>Mensagem de erro</small>
+            </div>
+        </div>
+
+        <div>
+            <input class="campo" name="senha" type="password" placeholder="Senha" id="password">
+        </div>
+
+        <button type="submit" id="entrar">Cadastrar</button>
+
+    </form>
+
+    <p">Já possui uma conta?<a class="link" href="/login"><u>Faça login</u></a></p>
+
+</section>
+
+
+{{>partials/footer}}

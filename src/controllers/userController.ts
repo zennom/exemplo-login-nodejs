@@ -11,6 +11,7 @@ export const index = async (req: Request, res: Response) => {
 
     let usuarios = await User.findAll()
 }
+
 // metodo para renderizar a página de criação de um novo usuário
 export const renderFormRegister = (req: Request, res: Response) => {
 
@@ -22,6 +23,7 @@ export const renderFormRegister = (req: Request, res: Response) => {
     // Renderiza a página de cadastro de usuário
     return res.render('cadastro');
 }
+
 // método para fazer a gravação no banco de dados dos usuários
 export const createNewUser =  async (req: Request, res: Response) =>{
      // essa variável armazena os dados recebidos via body
