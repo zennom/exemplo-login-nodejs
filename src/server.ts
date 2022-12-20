@@ -3,10 +3,14 @@ import dotenv from 'dotenv'
 import mustache from 'mustache-express'
 import path from 'path'
 import mainRoutes from './routes/index'
+//importando flash messages
+import flash from 'connect-flash'
 
 dotenv.config()
 
 const server = express()
+
+server.use(flash());
 
 server.set('view engine','mustache')
 server.set('views',path.join(__dirname,'views'))
