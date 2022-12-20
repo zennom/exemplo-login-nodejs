@@ -1,32 +1,41 @@
 {{>partials/header}}
 
-<section>
+
+<div>
+    <h1>Registrar</h1>
+</div>
+
+<p>Preencha as informações abaixo:</p>
+
+<form action="/register" method="post">
+
     <div>
-        <h1>Registrar</h1>
+        <label for="name">Nome:</label>
+        <input type="text" name="name" placeholder="Digite seu nome" required>
     </div>
 
-    <p>Preencha as informações abaixo:</p>
 
-    <form id="form" class="form" action="/cadastro" method="post">
-        <div>
-            <input class="campo" name="nome" type="text" placeholder="Nome" id="nome">
-        </div>
+    <div>
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" placeholder="Digite seu e-mail" required>
+    </div>
 
-        <div>
-            <input class="campo" name="email" type="email" placeholder="E-mail" id="email">
-        </div>
+    <div>
+        <label for="password">Senha:</label>
+        <input type="password" name="password" placeholder="Digite sua senha" required>
+    </div>
 
-        <div>
-            <input class="campo" name="senha" type="password" placeholder="Senha" id="password">
-        </div>
+    <div>
+        <label for="confirm-password">Confirmar senha:</label>
+        <input type="password" name="confirmpassword" placeholder="Confirme sua senha" required>
+    </div>
 
-        <button type="submit" id="entrar">Cadastrar</button>
+    <input type="submit" value="Cadastrar">
+</form>
 
-    </form>
+<p">Já possui uma conta?<a class="link" href="/login"><u>Faça login</u></a></p>
 
-    <p">Já possui uma conta?<a class="link" href="/login"><u>Faça login</u></a></p>
 
-</section>
 
 
 {{>partials/footer}}
