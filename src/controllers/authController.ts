@@ -10,7 +10,11 @@ export const login = (req:Request, res:Response) =>{
 }
 
 export const register = (req:Request, res:Response) =>{
-    res.render('pages/register')
+
+    const error = req.flash('error')
+    console.log(error)
+
+    res.render('pages/register', { error })
 }
 
 export const registerPost = async (req:Request, res:Response) =>{
@@ -22,12 +26,13 @@ export const registerPost = async (req:Request, res:Response) =>{
     //se password for diferente de confirmpassword
     if(password != confirmpassword){
         //enviar uma mensagem de erro ao usuário com flashmessage
+        
+        req.flash('error','As senhas não conferem, tente novamente')
 
-        req.flash('message','As senhas não conferem, tente novamente')
+        res.redirect('/register')
 
-        res.render('pages/register')
-
-        return 
+        
+        
     }
 
     /*
