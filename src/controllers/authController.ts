@@ -3,7 +3,6 @@ import { User } from "../models/User"
 //criptografando a senha com bcrypt
 import bcrypt from 'bcrypt'
 
-
 //rotas de visualização login e register
 export const login = (req:Request, res:Response) =>{
 
@@ -24,11 +23,31 @@ export const registerPost = async (req:Request, res:Response) =>{
     if(password != confirmpassword){
         //enviar uma mensagem de erro ao usuário com flashmessage
 
-        req.flash('messages','As senhas não conferem, tente novamente')
+        req.flash('message','As senhas não conferem, tente novamente')
 
         res.render('pages/register')
 
         return 
     }
+
+    /*
+
+    //checar se o usuário existe
+
+    const checkIfUserExists = await User.findOne({
+
+        where:{email:email}
+
+    })
+
+    //se o usuário existir exibir uma flash message
+
+    if(checkIfUserExists){
+        req.flash('message','O e-mail já está em uso')
+        res.render('pages/register')
+
+        return
+    }
+*/
 
 }

@@ -12,7 +12,7 @@ router.get('/login',authController.login)
 router.get('/register',authController.register)
 
 //criando o post do register
-router.get('/register',authController.registerPost)
+router.post('/register',authController.registerPost)
 
 
 export default router 
