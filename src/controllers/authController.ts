@@ -11,10 +11,10 @@ export const login = (req:Request, res:Response) =>{
 
 export const register = (req:Request, res:Response) =>{
 
-    const error = req.flash('error')
-    console.log(error)
+    const message = req.flash('message')
+    //console.log(error)
 
-    res.render('pages/register', { error })
+    res.render('pages/register', { message })
 }
 
 export const registerPost = async (req:Request, res:Response) =>{
@@ -27,7 +27,7 @@ export const registerPost = async (req:Request, res:Response) =>{
     if(password != confirmpassword){
         //enviar uma mensagem de erro ao usuário com flashmessage
         
-        req.flash('error','As senhas não conferem, tente novamente')
+        req.flash('message','As senhas não conferem, tente novamente')
 
         res.redirect('/register')
         
@@ -44,7 +44,7 @@ export const registerPost = async (req:Request, res:Response) =>{
 
     //se o usuário existir exibir uma flash message
     if(checkIfUserExists){
-        req.flash('error','O e-mail já está em uso')
+        req.flash('message','O e-mail já está em uso')
         res.redirect('/register')
 
         return
@@ -53,18 +53,29 @@ export const registerPost = async (req:Request, res:Response) =>{
     //criar o password
 
     /*vamos dificultar a senha para o hacker não conseguir 
-    quebrar a senha , entao vamos por 10 caracteres randomicos */
+    quebrar a senha , então vamos por 10 caracteres randomicos */
 
     const salt = bcrypt.genSaltSync(10)
-    /*gerar a hash com o meu salt para o usuário */
+    //gerar a hash com o meu salt para o usuário 
     const hashedPassword = bcrypt.hashSync(password,salt)
 
-    /*agora vamos criar um objeto de usuário com os dados
-    recebidos */
+    /*agora vamos criar um objeto de usuário 
+    com os dados recebidos */
     const user = {
         name,
         email,
         password: hashedPassword
     }
 
+    // usando try catch para prevenir algum erro
+    try{
+        await User.create(user)
+        req.flash('message','cadastro realizado com sucesso')
+
+        res.redirect('/')
+
+    } catch(err){
+        console.log(err)
+    }
+    
 }

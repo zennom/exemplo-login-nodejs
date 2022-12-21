@@ -7,6 +7,7 @@ router.get('/',(req,res) =>{
     res.render("pages/home")
 })
 
+
 //rotas de visualização login e register
 router.get('/login',authController.login)
 router.get('/register',authController.register)

@@ -7,8 +7,8 @@
 <form action="/login" method="post">
 
     <div>
-        <label for="name">Nome:</label>
-        <input type="text" name="name" placeholder="Digite seu nome" required>
+        <label for="name">Email:</label>
+        <input type="text" name="email" placeholder="Digite seu email" required>
     </div>
 
     <div>
@@ -20,7 +20,7 @@
     <input type="submit" value="Entrar">
 
     <div>
-        {{error}}
+        {{message}}
     </div>
 
 </form>

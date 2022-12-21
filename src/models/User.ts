@@ -3,9 +3,9 @@ import { sequelize } from '../instances/mysql'
 
 export interface UserInstance extends Model {
     id: number,
-    nome: string,
+    name: string,
     email: string,
-    senha: string,
+    password: string,
 }
 export const User = sequelize.define<UserInstance>('User',{
     id: {
@@ -13,7 +13,7 @@ export const User = sequelize.define<UserInstance>('User',{
         primaryKey:true,
         autoIncrement:true
     },
-    nome: {
+    name: {
         type:DataTypes.STRING,
         allowNull:false
     },
@@ -21,7 +21,7 @@ export const User = sequelize.define<UserInstance>('User',{
         type:DataTypes.STRING,
         allowNull:false
     },
-    senha: {
+    password: {
         type:DataTypes.STRING,
         allowNull:false
 
