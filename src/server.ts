@@ -14,8 +14,6 @@ dotenv.config()
 
 const server = express()
 
-server.use(flash());
-
 server.set('view engine','mustache')
 server.set('views',path.join(__dirname,'views'))
 server.engine('mustache',mustache())
@@ -38,6 +36,7 @@ server.use(
         }
     })
 )
+server.use(flash());
 
 server.use(mainRoutes)
 
