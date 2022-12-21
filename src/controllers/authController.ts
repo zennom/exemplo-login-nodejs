@@ -4,7 +4,6 @@ import { User } from "../models/User"
 import bcrypt from 'bcrypt'
 
 
-
 //rotas de visualização login e register
 export const login = (req:Request, res:Response) =>{
 
@@ -24,8 +23,12 @@ export const registerPost = async (req:Request, res:Response) =>{
     //se password for diferente de confirmpassword
     if(password != confirmpassword){
         //enviar uma mensagem de erro ao usuário com flashmessage
+
+        req.flash('messages','As senhas não conferem, tente novamente')
+
+        res.render('pages/register')
+
+        return 
     }
-
-
 
 }
