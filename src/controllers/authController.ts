@@ -30,13 +30,10 @@ export const registerPost = async (req:Request, res:Response) =>{
         req.flash('error','As senhas não conferem, tente novamente')
 
         res.redirect('/register')
-
         
-        
+        return
     }
-
-    /*
-
+    
     //checar se o usuário existe
 
     const checkIfUserExists = await User.findOne({
@@ -46,13 +43,28 @@ export const registerPost = async (req:Request, res:Response) =>{
     })
 
     //se o usuário existir exibir uma flash message
-
     if(checkIfUserExists){
-        req.flash('message','O e-mail já está em uso')
-        res.render('pages/register')
+        req.flash('error','O e-mail já está em uso')
+        res.redirect('/register')
 
         return
     }
-*/
+
+    //criar o password
+
+    /*vamos dificultar a senha para o hacker não conseguir 
+    quebrar a senha , entao vamos por 10 caracteres randomicos */
+
+    const salt = bcrypt.genSaltSync(10)
+    /*gerar a hash com o meu salt para o usuário */
+    const hashedPassword = bcrypt.hashSync(password,salt)
+
+    /*agora vamos criar um objeto de usuário com os dados
+    recebidos */
+    const user = {
+        name,
+        email,
+        password: hashedPassword
+    }
 
 }
