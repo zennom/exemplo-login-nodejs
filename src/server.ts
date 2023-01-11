@@ -9,10 +9,10 @@ import flash from 'connect-flash'
 import session from 'express-session'
 
 
-
 dotenv.config()
 
 const server = express()
+
 
 server.set('view engine','mustache')
 server.set('views',path.join(__dirname,'views'))
@@ -36,7 +36,17 @@ server.use(
         }
     })
 )
-server.use(flash());
+server.use(flash())
+
+server.use((req, res, next) => {
+    
+    if(req.session.userid) {
+        res.locals.session = req.session
+    }
+
+    next()
+})
+
 
 server.use(mainRoutes)
 

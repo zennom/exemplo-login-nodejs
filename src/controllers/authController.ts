@@ -35,7 +35,6 @@ export const registerPost = async (req:Request, res:Response) =>{
     }
     
     //checar se o usuário existe
-
     const checkIfUserExists = await User.findOne({
 
         where:{email:email}
@@ -67,7 +66,6 @@ export const registerPost = async (req:Request, res:Response) =>{
         password: hashedPassword
     }
 
-    // usando try catch para prevenir algum erro
     try{
         await User.create(user)
         req.flash('message','cadastro realizado com sucesso')
