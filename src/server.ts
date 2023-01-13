@@ -13,6 +13,13 @@ dotenv.config()
 
 const server = express()
 
+//tipando userID
+declare module 'express-session' {
+    interface SessionData {
+      userid: string;
+    }
+}
+
 
 server.set('view engine','mustache')
 server.set('views',path.join(__dirname,'views'))
