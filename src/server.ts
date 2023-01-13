@@ -13,10 +13,10 @@ dotenv.config()
 
 const server = express()
 
-//tipando userID
+//fazendo o declaration merging de userId
 declare module 'express-session' {
     interface SessionData {
-      userid: string;
+      userId: string;
     }
 }
 
@@ -47,7 +47,7 @@ server.use(flash())
 
 server.use((req, res, next) => {
     
-    if(req.session.userid) {
+    if(req.session.userId) {
         res.locals.session = req.session
     }
 
