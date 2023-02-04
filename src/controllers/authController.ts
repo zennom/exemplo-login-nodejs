@@ -68,12 +68,21 @@ export const registerPost = async (req:Request, res:Response) =>{
 
     try{
         await User.create(user)
+
+        //inicializar a sessão
+        req.session.userId = user.id
+
         req.flash('message','cadastro realizado com sucesso')
 
-        res.redirect('/')
+        //salvar a sessão
+        //para garantir que meu usuário seja salvo
+        //antes de redirecioná-lo para /
+        req.session.save(() =>{
+            res.redirect('/')
+        })
+
 
     } catch(err){
         console.log(err)
     }
-    
 }

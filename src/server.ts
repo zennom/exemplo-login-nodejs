@@ -16,7 +16,7 @@ const server = express()
 //fazendo o declaration merging de userId
 declare module 'express-session' {
     interface SessionData {
-      userId: string;
+      userId: string,
     }
 }
 
