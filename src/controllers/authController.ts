@@ -68,9 +68,11 @@ export const registerPost = async (req:Request, res:Response) =>{
 
     try{
         await User.create(user)
-
+        //const createdUser = await User.create(user);
         //inicializar a sessão
-        //req.session.userId = user.id
+        //req.session.userId = createdUser.id;
+        req.session.userId = user.id
+
 
         req.flash('message','cadastro realizado com sucesso')
 
