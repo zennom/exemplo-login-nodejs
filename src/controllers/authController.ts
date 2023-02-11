@@ -60,18 +60,17 @@ export const registerPost = async (req:Request, res:Response) =>{
 
     /*agora vamos criar um objeto de usuário 
     com os dados recebidos */
-    const user = {
-        name,
-        email,
-        password: hashedPassword
-    }
 
     try{
-        await User.create(user)
+        const user = await User.create({
+            name,
+            email,
+            password: hashedPassword})
         //const createdUser = await User.create(user);
         //inicializar a sessão
         //req.session.userId = createdUser.id;
-        req.session.userId = user.id
+
+        req.session.userId = JSON.stringify(user.id)
 
 
         req.flash('message','cadastro realizado com sucesso')
