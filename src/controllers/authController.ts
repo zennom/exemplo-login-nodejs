@@ -65,7 +65,8 @@ export const registerPost = async (req:Request, res:Response) =>{
         const user = await User.create({
             name,
             email,
-            password: hashedPassword})
+            password: hashedPassword
+        })
         //const createdUser = await User.create(user);
         //inicializar a sessão
         //req.session.userId = createdUser.id;
