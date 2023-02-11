@@ -1,8 +1,13 @@
 {{>partials/header}}
+<ul>
+    {{#session.userId}}
+    <li><a href="/">Página Inicial</a></li>
+    <li><a href="/logout">Sair</a></li>
+    {{/session.userId}}
+</ul>
 
 <h1>Página Inicial do site</h1>
 
-Seja bem vindo,
-
+Página Inicial
 
 {{>partials/footer}}

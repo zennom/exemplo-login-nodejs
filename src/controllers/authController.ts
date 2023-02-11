@@ -59,9 +59,11 @@ export const registerPost = async (req:Request, res:Response) =>{
     const hashedPassword = bcrypt.hashSync(password,salt)
 
     /*agora vamos criar um objeto de usuário 
-    com os dados recebidos */
-
+    com os dados recebidos 
+    obs.: estamos usando try - catch para
+    prevenir algum erro*/
     try{
+        /* criando o usuário no banco */
         const user = await User.create({
             name,
             email,
