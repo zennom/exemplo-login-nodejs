@@ -85,8 +85,17 @@ export const registerPost = async (req:Request, res:Response) =>{
             res.redirect('/')
         })
 
-
     } catch(err){
         console.log(err)
     }
+}
+
+export const logout = (req:Request, res:Response) =>{
+    /*aqui precisamos ter acesso a session
+    para destruir o login do usuário */
+
+    req.session.destroy()
+
+    res.redirect('/')
+
 }

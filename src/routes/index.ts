@@ -14,5 +14,8 @@ router.get('/register',authController.register)
 //criando o post do register
 router.post('/register',authController.registerPost)
 
+//acessar o logout
+router.get('/logout',authController.logout)
+
 
 export default router 
